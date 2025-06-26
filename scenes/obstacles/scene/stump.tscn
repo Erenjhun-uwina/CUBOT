@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://btdxpemlmwebw"]
+
+[ext_resource type="Script" uid="uid://bt5kf5sexwc5x" path="res://scenes/obstacles/script/stump.gd" id="1_0ujyk"]
+[ext_resource type="Texture2D" uid="uid://ca01iuenpdkvj" path="res://assets/img/obstacles/stump.png" id="2_b86wc"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0ujyk"]
+radius = 54.0
+height = 122.0
+
+[node name="Stump" type="Area2D" groups=["obstacle"]]
+collision_layer = 0
+monitorable = false
+script = ExtResource("1_0ujyk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(4, 4)
+texture = ExtResource("2_b86wc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_0ujyk")

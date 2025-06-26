@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bljbowjhbqhmg"]
+
+[ext_resource type="Script" uid="uid://dxy52ssp0scef" path="res://cubot.gd" id="1_05fu0"]
+[ext_resource type="Texture2D" uid="uid://c55rloi7siigh" path="res://icon.svg" id="1_hlq5q"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hlq5q"]
+height = 118.0
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_05fu0")
+
+[node name="Icon2" type="Sprite2D" parent="."]
+position = Vector2(0, -62)
+texture = ExtResource("1_hlq5q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -9)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_hlq5q")

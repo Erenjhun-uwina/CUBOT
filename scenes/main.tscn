@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=3 uid="uid://bju4jxwr7a0pg"]
+
+[ext_resource type="Script" uid="uid://e5vchwn4mqqe" path="res://scenes/main.gd" id="1_d36gk"]
+[ext_resource type="PackedScene" uid="uid://bpkphu8qj137m" path="res://scenes/bg.tscn" id="1_qy3kl"]
+[ext_resource type="PackedScene" uid="uid://b5pwnh1tmyrnl" path="res://scenes/ground.tscn" id="2_qu4oq"]
+[ext_resource type="PackedScene" uid="uid://bhtein0chknfn" path="res://scenes/cubot.tscn" id="3_l41lx"]
+[ext_resource type="PackedScene" uid="uid://lyf4a3sklk1o" path="res://scenes/GUI/hud.tscn" id="5_cgpie"]
+[ext_resource type="PackedScene" uid="uid://lotwuige1aee" path="res://scenes/GUI/game_over.tscn" id="6_6n2u1"]
+[ext_resource type="PackedScene" uid="uid://btgolia27owwb" path="res://codeediet.tscn" id="7_o6xl0"]
+
+[node name="Main" type="Node" node_paths=PackedStringArray("cubot")]
+process_mode = 4
+script = ExtResource("1_d36gk")
+cubot = NodePath("Dino")
+
+[node name="Bg" parent="." instance=ExtResource("1_qy3kl")]
+
+[node name="Ground" parent="." instance=ExtResource("2_qu4oq")]
+collision_layer = 16
+
+[node name="Dino" parent="." node_paths=PackedStringArray("runner") instance=ExtResource("3_l41lx")]
+position = Vector2(153, 489)
+collision_mask = 16
+runner = NodePath("..")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+
+[node name="HUD" parent="." instance=ExtResource("5_cgpie")]
+
+[node name="HUD2" type="CanvasLayer" parent="."]
+process_mode = 1
+
+[node name="Node2D" parent="HUD2" instance=ExtResource("7_o6xl0")]
+
+[node name="GameOver" parent="." instance=ExtResource("6_6n2u1")]
+process_mode = 2
+visible = false
