@@ -1,22 +1,22 @@
 [gd_scene load_steps=10 format=3 uid="uid://crugqy7j4jt4a"]
 
-[ext_resource type="Texture2D" uid="uid://dyasm1fruq87r" path="res://assets/img/obstacles/Bird.png" id="1_rxtif"]
-[ext_resource type="Script" uid="uid://b5d7akwdtwcc0" path="res://scenes/obstacles/script/bird.gd" id="1_sru60"]
+[ext_resource type="Script" uid="uid://b5d7akwdtwcc0" path="res://scenes/obstacles/script/drone.gd" id="1_ke5pa"]
+[ext_resource type="Texture2D" uid="uid://dyasm1fruq87r" path="res://assets/img/obstacles/Bird.png" id="2_dmvrc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3nmc2"]
-atlas = ExtResource("1_rxtif")
+atlas = ExtResource("2_dmvrc")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sun05"]
-atlas = ExtResource("1_rxtif")
+atlas = ExtResource("2_dmvrc")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_byqkj"]
-atlas = ExtResource("1_rxtif")
+atlas = ExtResource("2_dmvrc")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_imiir"]
-atlas = ExtResource("1_rxtif")
+atlas = ExtResource("2_dmvrc")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5lysr"]
@@ -49,7 +49,7 @@ height = 84.0
 [node name="Bird" type="Area2D" groups=["obstacle"]]
 collision_layer = 0
 monitorable = false
-script = ExtResource("1_sru60")
+script = ExtResource("1_ke5pa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
