@@ -1,7 +1,6 @@
 extends Node2D
 class_name CPU
 
-
 var has_jump_request:bool = false
 var has_duck_request:bool = false
 @export var cubot:Cubot
@@ -26,7 +25,7 @@ func jump():
 func get_visible_objs():
 	return cubot.get_tree().get_nodes_in_group("obstacle") as Array[Obstacle]
 
-func get_nearest_obs():
+func get_nearest_obs()->Obstacle:
 	var nearest:Obstacle
 	var nearest_dist:float = 0
 	
@@ -45,7 +44,6 @@ func get_nearest_obs():
 func init():
 	#jump()
 	pass
-	
 
 func loop(delta:float):
 	#clear_requests()
