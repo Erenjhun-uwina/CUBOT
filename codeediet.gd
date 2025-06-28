@@ -1,27 +1,40 @@
 extends Control
-@onready var code_edit: Gameboard = $VBoxContainer/CodeEdit
 
+@export var runner:Runner
+@onready var code_edit: Gameboard = $PanelContainer/VBoxContainer/CodeEdit
+
+signal run
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	get_parent().show()
+	visibility_changed.connect(func():
+		
+		if code_edit.text.is_empty():
+			code_edit.text = "extends CPU \n
+			func start():\n
+			\tpass\n
+			func loop(delta):\n
+			\tpass
+			"
+			
+		if not visible:
+			get_tree().paused = false
+			return
+		get_tree().paused = true
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+		)
 
 
 func _on_button_pressed() -> void:
-	var runner:Runner =  get_parent().get_parent()
-	runner.process_mode = Node.PROCESS_MODE_ALWAYS
-	hide()
 	
 	var script = GDScript.new()
-	var code:="extends CPU \n" + code_edit.text
-	
+	var code:= code_edit.text
 	script.source_code = code
+	print(code)
 	script.reload(true)
 	runner.cubot.cpu  = script.new(runner.cubot)
+	hide()
 	
+	run.emit()
 	
