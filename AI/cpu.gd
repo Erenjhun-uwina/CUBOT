@@ -41,16 +41,18 @@ func get_nearest_obs()->Obstacle:
 			
 	return nearest
 
-func init():
+func start():
 	#jump()
 	pass
 
 func loop(delta:float):
-	#clear_requests()
-	#
-	#var nearest:Obstacle = get_nearest_obs()
-	#if nearest:print(cubot.global_position.distance_to(nearest.global_position))
-	#print(nearest)
-	#
-	#if nearest and cubot.global_position.distance_to(nearest.global_position)< 150 :jump()
 	pass
+##ad
+##asd
+#func loop(delta:float):
+	#var nearest:Obstacle = get_nearest_obs()
+	#
+	#if not  nearest:return
+	#var dist = abs(nearest.x - cubot.x)
+	#
+	#if dist < 150 and dist > 100:jump()
