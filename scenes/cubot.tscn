@@ -1,8 +1,18 @@
-[gd_scene load_steps=21 format=3 uid="uid://bhtein0chknfn"]
+[gd_scene load_steps=26 format=3 uid="uid://bhtein0chknfn"]
 
 [ext_resource type="Script" uid="uid://cmwxcmmfsc77e" path="res://scenes/cubot.gd" id="1_1stpw"]
 [ext_resource type="AudioStream" uid="uid://dscpg6m666dta" path="res://assets/sound/jump.wav" id="2_60go1"]
+[ext_resource type="Shader" uid="uid://52jcuvqwesyc" path="res://outline.gdshader" id="2_na28b"]
 [ext_resource type="Texture2D" uid="uid://do64hcpocpjno" path="res://assets/img/cubot/lu bot.png" id="2_svlud"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_35u7b"]
+shader = ExtResource("2_na28b")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.669
+shader_parameter/pattern = 2
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/number_of_images = Vector2(1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p8oyi"]
 atlas = ExtResource("2_svlud")
@@ -127,8 +137,46 @@ radius = 7.25
 height = 21.25
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_na28b"]
-radius = 4.125
+radius = 4.12505
 height = 21.0
+
+[sub_resource type="Animation" id="Animation_na28b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("groundCOl:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-0.125, 8.25)]
+}
+
+[sub_resource type="Animation" id="Animation_svlud"]
+resource_name = "hover"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("groundCOl:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(0.225313, 0.392292),
+"update": 0,
+"values": [Vector2(-0.125, 3.875), Vector2(-0.125, 9.75)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_na28b"]
+_data = {
+&"RESET": SubResource("Animation_na28b"),
+&"hover": SubResource("Animation_svlud")
+}
 
 [node name="cubot" type="CharacterBody2D"]
 z_index = 1
@@ -139,14 +187,18 @@ script = ExtResource("1_1stpw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+material = SubResource("ShaderMaterial_35u7b")
 position = Vector2(-0.125, -0.875002)
 scale = Vector2(0.741667, 0.804348)
 sprite_frames = SubResource("SpriteFrames_6wmvf")
-animation = &"duck"
+animation = &"run"
 autoplay = "idle"
+frame = 1
+frame_progress = 0.564647
 speed_scale = 0.5
 
 [node name="groundCOl" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-0.125, 8.25)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_35u7b")
@@ -156,15 +208,26 @@ stream = ExtResource("2_60go1")
 volume_db = -25.0
 
 [node name="run_col" type="Area2D" parent="."]
+visible = false
 
 [node name="shape" type="CollisionShape2D" parent="run_col"]
+visible = false
 position = Vector2(-0.125, 0.25)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_svlud")
 
 [node name="duck_col" type="Area2D" parent="."]
+visible = false
+modulate = Color(100, 100, 100, 1)
 
 [node name="shape" type="CollisionShape2D" parent="duck_col"]
+visible = false
 position = Vector2(0, 2.375)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_na28b")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_na28b")
+}
+autoplay = "hover"

@@ -1,7 +1,17 @@
-[gd_scene load_steps=14 format=3 uid="uid://mpj18dwyvja6"]
+[gd_scene load_steps=16 format=3 uid="uid://mpj18dwyvja6"]
 
 [ext_resource type="Script" uid="uid://cjyb6pted4acv" path="res://scenes/cubot_corpse.gd" id="1_ee42o"]
+[ext_resource type="Shader" uid="uid://52jcuvqwesyc" path="res://outline.gdshader" id="2_aw1k6"]
 [ext_resource type="Texture2D" uid="uid://do64hcpocpjno" path="res://assets/img/cubot/lu bot.png" id="2_ee42o"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mb620"]
+shader = ExtResource("2_aw1k6")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.65
+shader_parameter/pattern = 2
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/number_of_images = Vector2(1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aw1k6"]
 atlas = ExtResource("2_ee42o")
@@ -87,7 +97,8 @@ script = ExtResource("1_ee42o")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(-0.125, -0.875002)
+material = SubResource("ShaderMaterial_mb620")
+position = Vector2(0.125, -0.875002)
 scale = Vector2(0.741667, 0.804348)
 sprite_frames = SubResource("SpriteFrames_ee42o")
 animation = &"idle"

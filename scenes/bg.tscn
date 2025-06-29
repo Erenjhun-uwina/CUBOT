@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bpkphu8qj137m"]
+[gd_scene load_steps=9 format=3 uid="uid://bpkphu8qj137m"]
 
 [ext_resource type="Texture2D" uid="uid://cysa04ywr7oi3" path="res://assets/img/background/plx-1.png" id="1_5v8qh"]
 [ext_resource type="Texture2D" uid="uid://bs8dvkk1vgt5h" path="res://assets/img/background/plx-2.png" id="2_3jfie"]
@@ -6,6 +6,16 @@
 [ext_resource type="Texture2D" uid="uid://c2y3w4ij2n3sa" path="res://assets/img/background/plx-4.png" id="4_3lhbs"]
 [ext_resource type="Texture2D" uid="uid://c4rlb0tycrggt" path="res://assets/img/background/plx-5.png" id="5_xlcew"]
 [ext_resource type="Texture2D" uid="uid://c1oqrqxusukd2" path="res://assets/img/background/ground.png" id="6_bf1jy"]
+[ext_resource type="Shader" uid="uid://52jcuvqwesyc" path="res://outline.gdshader" id="6_r6ch1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4la4c"]
+shader = ExtResource("6_r6ch1")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 10.0
+shader_parameter/pattern = 1
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/number_of_images = Vector2(1, 1)
 
 [node name="Bg" type="ParallaxBackground"]
 
@@ -16,7 +26,7 @@ texture = ExtResource("1_5v8qh")
 centered = false
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
-motion_scale = Vector2(0.4, 0.667)
+motion_scale = Vector2(0.05, 0.084)
 motion_mirroring = Vector2(1152, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
@@ -26,7 +36,7 @@ texture = ExtResource("2_3jfie")
 centered = false
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
-motion_scale = Vector2(0.55, 0.786)
+motion_scale = Vector2(0.2, 0.286)
 motion_mirroring = Vector2(1152, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer2"]
@@ -36,7 +46,7 @@ texture = ExtResource("3_fpq7s")
 centered = false
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
-motion_scale = Vector2(0.7, 0.875)
+motion_scale = Vector2(0.4, 0.5)
 motion_mirroring = Vector2(1152, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer3"]
@@ -56,6 +66,7 @@ centered = false
 
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxLayer4"]
 texture_filter = 1
+material = SubResource("ShaderMaterial_4la4c")
 position = Vector2(-6, 551)
 texture = ExtResource("6_bf1jy")
 centered = false

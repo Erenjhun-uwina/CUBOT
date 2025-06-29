@@ -8,12 +8,19 @@ var cpu:CPU
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
-const GRAVITY : int = 2600
-const JUMP_SPEED : int = -1500
-const MAX_JUMP_HEIGHT := 250  # Max height above jump start
+const GRAVITY : int = 2500
+const JUMP_SPEED : int = -1300
+const MAX_JUMP_HEIGHT := 350  # Max height above jump start
 
 @onready var run_col: Area2D = $run_col
 
+
+var x:
+	get():return global_position.x
+	set(val):return
+var y:
+	get():return global_position.y
+	set(val):return
 
 
 var jump_start_y := 0.0

@@ -9,7 +9,6 @@ func _ready() -> void:
 
 func spawn(pos:Vector2):
 	global_position = pos
-	velocity *=0
 	velocity = Vector2(-700,-300)
 	show()
 	set_physics_process(true)
@@ -17,6 +16,7 @@ func spawn(pos:Vector2):
 
 func disable():
 	hide()
+	velocity *=0
 	set_physics_process(false)
 
 func _physics_process(delta: float) -> void:
