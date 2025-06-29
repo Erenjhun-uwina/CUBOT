@@ -7,10 +7,11 @@
 radius = 49.0
 height = 114.0
 
-[node name="Barrel" type="Area2D" groups=["obstacle"]]
+[node name="Barrel" type="Area2D" node_paths=PackedStringArray("visibility_notifier") groups=["obstacle"]]
 collision_layer = 0
 monitorable = false
 script = ExtResource("1_ptqd7")
+visibility_notifier = NodePath("VisibleOnScreenNotifier2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -19,3 +20,5 @@ texture = ExtResource("1_4t56u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_0kwxw")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

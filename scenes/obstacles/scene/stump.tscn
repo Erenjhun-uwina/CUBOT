@@ -7,10 +7,11 @@
 radius = 54.0
 height = 122.0
 
-[node name="Stump" type="Area2D" groups=["obstacle"]]
+[node name="Stump" type="Area2D" node_paths=PackedStringArray("visibility_notifier") groups=["obstacle"]]
 collision_layer = 0
 monitorable = false
 script = ExtResource("1_0ujyk")
+visibility_notifier = NodePath("VisibleOnScreenNotifier2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -20,3 +21,5 @@ texture = ExtResource("2_b86wc")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_0ujyk")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
