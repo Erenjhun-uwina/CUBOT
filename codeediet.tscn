@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://btgolia27owwb"]
+[gd_scene load_steps=10 format=3 uid="uid://btgolia27owwb"]
 
 [ext_resource type="Texture2D" uid="uid://cysa04ywr7oi3" path="res://assets/img/background/plx-1.png" id="1_a1pra"]
 [ext_resource type="Script" uid="uid://cmx56khgmt7vk" path="res://code_edit.gd" id="1_ohr5c"]
@@ -11,15 +11,32 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xt57a"]
 bg_color = Color(0, 0.0666667, 0.0941176, 0.831373)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a1pra"]
-bg_color = Color(0.0768358, 0.0768358, 0.0768358, 1)
-
 [sub_resource type="CodeHighlighter" id="CodeHighlighter_ohr5c"]
+number_color = Color(0.995766, 1, 0.318056, 1)
 symbol_color = Color(0.654902, 0.772549, 0.976471, 1)
 function_color = Color(0.384314, 0.854902, 0.94902, 1)
-member_variable_color = Color(0.698039, 0.709804, 0.72549, 1)
+member_variable_color = Color(0.670588, 0.788235, 1, 1)
+keyword_colors = {
+"as": Color(1, 0.439, 0.522, 1),
+"class_name": Color(1, 0.439, 0.522, 1),
+"extends": Color(1, 0.439, 0.522, 1),
+"false": Color(1, 0.439, 0.522, 1),
+"for": Color(0.976, 0.537, 0.78, 1),
+"func": Color(1, 0.439, 0.522, 1),
+"in": Color(1, 0.439, 0.522, 1),
+"is": Color(1, 0.439, 0.522, 1),
+"not": Color(1, 0.439, 0.522, 1),
+"pass": Color(0.976, 0.537, 0.78, 1),
+"return": Color(0.976, 0.537, 0.78, 1),
+"true": Color(1, 0.439, 0.522, 1),
+"var": Color(1, 0.439, 0.522, 1)
+}
+color_regions = {
+"\" \"": Color(0.976, 0.91, 0.62, 1)
+}
 
 [node name="Node2D" type="Control"]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -119,10 +136,11 @@ layout_mode = 2
 text = "RUN"
 
 [node name="CodeEdit" type="CodeEdit" parent="PanelContainer/VBoxContainer"]
+texture_filter = 1
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
 theme_override_colors/code_folding_color = Color(0.252028, 0.252028, 0.252028, 1)
-theme_override_styles/panel = SubResource("StyleBoxFlat_a1pra")
 text = "extends CPU
 
 func start():
@@ -130,6 +148,8 @@ func start():
 
 func loop(delta:float):
 	pass"
+minimap_draw = true
+minimap_width = 99
 caret_blink = true
 syntax_highlighter = SubResource("CodeHighlighter_ohr5c")
 highlight_all_occurrences = true
@@ -139,6 +159,7 @@ line_folding = true
 gutters_draw_line_numbers = true
 gutters_zero_pad_line_numbers = true
 gutters_draw_fold_gutter = true
+delimiter_comments = Array[String](["#"])
 code_completion_enabled = true
 indent_automatic = true
 auto_brace_completion_enabled = true

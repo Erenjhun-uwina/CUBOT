@@ -31,10 +31,10 @@ func _on_button_pressed() -> void:
 	var script = GDScript.new()
 	var code:= code_edit.text
 	script.source_code = code
-	print(code)
+	#print(code)
 	script.reload(true)
 	runner.cubot.cpu  = script.new(runner.cubot)
 	hide()
-	
 	run.emit()
+	print("pff")
 	
