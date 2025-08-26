@@ -1,4 +1,3 @@
-@tool
 extends CodeEdit
 class_name Gameboard
 
@@ -9,7 +8,7 @@ const red_col_keywords:Array[String] = [
 ]
 
 const pink_col_keywords:Array[String] = [
-	"return","pass","for"
+	"return","pass","for","if","continue"
 ]
 
 
@@ -27,7 +26,9 @@ func _ready() -> void:
 	for key in pink_col_keywords:
 		(syntax_highlighter as CodeHighlighter).add_keyword_color(key,Color(0.976, 0.537, 0.78))
 	
-	(syntax_highlighter as CodeHighlighter).add_color_region('"','"',Color(0.976, 0.91, 0.62))
+		(syntax_highlighter as CodeHighlighter).add_color_region('"','"',Color(0.976, 0.91, 0.62))
+	
+	code_completion_prefixes.push_front("func")
 	
 func code_request_code_completion():
 	update_code_completion_options(true)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bju4jxwr7a0pg"]
+[gd_scene load_steps=12 format=3 uid="uid://bju4jxwr7a0pg"]
 
 [ext_resource type="Script" uid="uid://e5vchwn4mqqe" path="res://scenes/main.gd" id="1_d36gk"]
 [ext_resource type="PackedScene" uid="uid://bpkphu8qj137m" path="res://scenes/bg.tscn" id="1_qy3kl"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://btgolia27owwb" path="res://codeediet.tscn" id="7_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://mpj18dwyvja6" path="res://scenes/cubot_corpse.tscn" id="8_tipki"]
 [ext_resource type="Environment" uid="uid://da4vyspq77wu4" path="res://scenes/world.tres" id="9_85g3d"]
+[ext_resource type="AudioStream" uid="uid://dyofjllmby2he" path="res://assets/sound/the-world-of-8-bit-games-301273.mp3" id="10_choun"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_tipki"]
 viewport_path = NodePath("SubViewport")
@@ -19,13 +20,10 @@ script = ExtResource("1_d36gk")
 cubot = NodePath("SubViewport/cubot")
 
 [node name="SubViewport" type="SubViewport" parent="."]
-size = Vector2i(1152, 647)
+size = Vector2i(1152, 648)
 
 [node name="Bg" parent="SubViewport" instance=ExtResource("1_qy3kl")]
 layer = -1
-
-[node name="Ground" parent="SubViewport" instance=ExtResource("2_qu4oq")]
-visible = false
 
 [node name="cubot" parent="SubViewport" node_paths=PackedStringArray("runner") instance=ExtResource("3_l41lx")]
 modulate = Color(1.1, 1.1, 1.1, 1)
@@ -49,6 +47,10 @@ z_index = 53
 position = Vector2(379, 279)
 scale = Vector2(5, 5)
 
+[node name="Ground" parent="SubViewport" instance=ExtResource("2_qu4oq")]
+visible = false
+position = Vector2(0, 544)
+
 [node name="gameview" type="CanvasLayer" parent="."]
 layer = -1
 
@@ -56,6 +58,8 @@ layer = -1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("ViewportTexture_tipki")
@@ -64,6 +68,13 @@ stretch_mode = 5
 
 [node name="HUD" parent="gameview" instance=ExtResource("5_cgpie")]
 layer = -1
+
+[node name="Label2" type="Label" parent="gameview/HUD"]
+offset_left = 1037.0
+offset_top = 12.0
+offset_right = 1135.0
+offset_bottom = 35.0
+text = "[ esc ]to stop"
 
 [node name="HUD2" type="CanvasLayer" parent="."]
 process_mode = 2
@@ -75,8 +86,14 @@ runner = NodePath("../..")
 
 [node name="GameOver" parent="." instance=ExtResource("6_6n2u1")]
 process_mode = 3
+visible = false
 
 [node name="WorldEnvironment2" type="WorldEnvironment" parent="."]
 environment = ExtResource("9_85g3d")
 
 [node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_choun")

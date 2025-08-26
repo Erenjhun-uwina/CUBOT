@@ -13,6 +13,8 @@ func spawn(pos:Vector2):
 	show()
 	set_physics_process(true)
 	sprite.play("idle")
+	$death.play()
+	$death2.play()
 
 func disable():
 	hide()

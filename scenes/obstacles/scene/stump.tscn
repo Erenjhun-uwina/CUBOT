@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://ca01iuenpdkvj" path="res://assets/img/obstacles/stump.png" id="2_b86wc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0ujyk"]
-radius = 54.0
-height = 122.0
+radius = 46.0
+height = 128.0
 
 [node name="Stump" type="Area2D" node_paths=PackedStringArray("visibility_notifier") groups=["obstacle"]]
 collision_layer = 0
@@ -19,7 +19,6 @@ scale = Vector2(4, 4)
 texture = ExtResource("2_b86wc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-rotation = 1.5708
 shape = SubResource("CapsuleShape2D_0ujyk")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

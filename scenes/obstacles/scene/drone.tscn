@@ -44,12 +44,13 @@ radius = 25.0
 height = 104.0
 
 [node name="Bird" type="Area2D" node_paths=PackedStringArray("visibility_notifier") groups=["obstacle"]]
+z_index = 9
 collision_layer = 0
 monitorable = false
 script = ExtResource("1_ke5pa")
 visibility_notifier = NodePath("VisibleOnScreenNotifier2D")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_3kdvh")
@@ -57,8 +58,7 @@ autoplay = "default"
 frame_progress = 0.965518
 speed_scale = 1.2
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-visible = false
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_s8m3f")

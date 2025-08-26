@@ -1,8 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://mpj18dwyvja6"]
+[gd_scene load_steps=18 format=3 uid="uid://mpj18dwyvja6"]
 
 [ext_resource type="Script" uid="uid://cjyb6pted4acv" path="res://scenes/cubot_corpse.gd" id="1_ee42o"]
 [ext_resource type="Shader" uid="uid://52jcuvqwesyc" path="res://outline.gdshader" id="2_aw1k6"]
 [ext_resource type="Texture2D" uid="uid://do64hcpocpjno" path="res://assets/img/cubot/lu bot.png" id="2_ee42o"]
+[ext_resource type="AudioStream" uid="uid://daatr2of8i067" path="res://assets/sound/Computer Error-SoundBible.com-1655839472.wav" id="4_kh3k6"]
+[ext_resource type="AudioStream" uid="uid://dytfi3e7ia170" path="res://assets/sound/CD Skipping-SoundBible.com-816257683.wav" id="5_sn8q7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mb620"]
 shader = ExtResource("2_aw1k6")
@@ -110,3 +112,14 @@ visible = false
 position = Vector2(-0.125, -1.5)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_ee42o")
+
+[node name="death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_kh3k6")
+volume_db = -2.811
+pitch_scale = 0.56
+
+[node name="death2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_sn8q7")
+volume_db = -3.962
+pitch_scale = 0.54
+mix_target = 1

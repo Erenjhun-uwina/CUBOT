@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://btgolia27owwb"]
+[gd_scene load_steps=12 format=3 uid="uid://btgolia27owwb"]
 
 [ext_resource type="Texture2D" uid="uid://cysa04ywr7oi3" path="res://assets/img/background/plx-1.png" id="1_a1pra"]
 [ext_resource type="Script" uid="uid://cmx56khgmt7vk" path="res://code_edit.gd" id="1_ohr5c"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dt8hsfog1mjyq" path="res://assets/img/background/plx-3.png" id="3_5m8w8"]
 [ext_resource type="Texture2D" uid="uid://c2y3w4ij2n3sa" path="res://assets/img/background/plx-4.png" id="4_5thdv"]
 [ext_resource type="Texture2D" uid="uid://c4rlb0tycrggt" path="res://assets/img/background/plx-5.png" id="5_klxky"]
+[ext_resource type="AudioStream" uid="uid://ch0x2i0pgu2mj" path="res://assets/sound/a-night-full-of-stars-peaceful-electronic-8-bitpiano-track-321551.mp3" id="8_5m8w8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xt57a"]
 bg_color = Color(0, 0.0666667, 0.0941176, 0.831373)
@@ -19,10 +20,12 @@ member_variable_color = Color(0.670588, 0.788235, 1, 1)
 keyword_colors = {
 "as": Color(1, 0.439, 0.522, 1),
 "class_name": Color(1, 0.439, 0.522, 1),
+"continue": Color(0.976, 0.537, 0.78, 1),
 "extends": Color(1, 0.439, 0.522, 1),
 "false": Color(1, 0.439, 0.522, 1),
 "for": Color(0.976, 0.537, 0.78, 1),
 "func": Color(1, 0.439, 0.522, 1),
+"if": Color(0.976, 0.537, 0.78, 1),
 "in": Color(1, 0.439, 0.522, 1),
 "is": Color(1, 0.439, 0.522, 1),
 "not": Color(1, 0.439, 0.522, 1),
@@ -34,6 +37,10 @@ keyword_colors = {
 color_regions = {
 "\" \"": Color(0.976, 0.91, 0.62, 1)
 }
+
+[sub_resource type="LabelSettings" id="LabelSettings_5m8w8"]
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Node2D" type="Control"]
 texture_filter = 1
@@ -165,5 +172,26 @@ indent_automatic = true
 auto_brace_completion_enabled = true
 auto_brace_completion_highlight_matching = true
 script = ExtResource("1_ohr5c")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_5m8w8")
+volume_db = -4.685
+pitch_scale = 0.71
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 7.0
+offset_right = 61.0
+offset_bottom = 30.0
+text = "f5"
+
+[node name="Label3" type="Label" parent="Label"]
+offset_left = 880.0
+offset_top = 616.0
+offset_right = 1217.0
+offset_bottom = 665.0
+text = "ERENJHUN emperius chungus III"
+label_settings = SubResource("LabelSettings_5m8w8")
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]

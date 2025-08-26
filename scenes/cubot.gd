@@ -8,17 +8,33 @@ var cpu:CPU
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
-const GRAVITY : int = 2500
+const GRAVITY : int = 2500 
 const JUMP_SPEED : int = -1300
 const MAX_JUMP_HEIGHT := 350  # Max height above jump start
 
 @onready var run_col: Area2D = $run_col
+@onready var shape: CollisionShape2D = $run_col/shape
+
+var speed:float:
+	get():return runner.speed
+
+var size:Vector2:
+
+	get():return shape.shape.get_rect().size.rotated(shape.global_rotation).abs() * shape.global_scale
+
+var width:float:
+	get():
+		return size.x
+
+var height:float:
+	get():
+		return size.y
 
 
-var x:
+var x:float:
 	get():return global_position.x
 	set(val):return
-var y:
+var y:float:
 	get():return global_position.y
 	set(val):return
 
@@ -34,6 +50,7 @@ func _ready() -> void:
 
 func _physics_process(delta):
 	
+	if not is_instance_valid(cpu) :return
 	cpu.loop(delta)
 		
 	
@@ -44,18 +61,24 @@ func _physics_process(delta):
 		jump_start_y = position.y  # reset jump origin
 
 		run_col.monitorable = true
+		run_col.position.y = 0
 		
-
 		if cpu.has_jump_request:
 			velocity.y = JUMP_SPEED
 			is_jumping = true
 			jump_start_y = position.y
-			$JumpSound.play()
+			($JumpSound as AudioStreamPlayer).pitch_scale = randf_range(0.5,1.5)
+			($JumpSound as AudioStreamPlayer).play()
 
 		elif cpu.has_duck_request:
 			sprite.play("duck")
-			run_col.monitorable = false
+			if not $AnimationPlayer.current_animation == "duck":
+				$AnimationPlayer.play("duck")
+				run_col.position.y = 10000000
 		else:
+			if not $AnimationPlayer.current_animation == "hover":
+				$AnimationPlayer.play("hover")
+			
 			sprite.play("run")
 	else:
 		if is_jumping:
@@ -75,12 +98,12 @@ func _physics_process(delta):
 
 func respawn()->void:
 	show()
-	set_physics_process(true)
+	process_mode = Node.PROCESS_MODE_INHERIT
 	position = DINO_START_POS
 	velocity = Vector2i(0, 0)
 	sprite.play("idle")
 
 func die()->void:
-	
+	cpu.queue_free()
 	hide()
-	set_physics_process(false)
+	process_mode = Node.PROCESS_MODE_DISABLED

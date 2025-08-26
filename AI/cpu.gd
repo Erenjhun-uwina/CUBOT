@@ -22,6 +22,9 @@ func clear_requests():
 func jump():
 	has_jump_request = true
 
+func duck():
+	has_duck_request = true
+
 func get_visible_objs():
 	return cubot.get_tree().get_nodes_in_group("obstacle") as Array[Obstacle]
 
@@ -45,14 +48,7 @@ func start():
 	#jump()
 	pass
 
-func loop(delta:float):
+
+func loop(delta: float) -> void:
 	pass
-##ad
-##asd
-#func loop(delta:float):
-	#var nearest:Obstacle = get_nearest_obs()
-	#
-	#if not  nearest:return
-	#var dist = abs(nearest.x - cubot.x)
-	#
-	#if dist < 150 and dist > 100:jump()
+ 

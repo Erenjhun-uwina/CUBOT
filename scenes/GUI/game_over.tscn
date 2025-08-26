@@ -65,3 +65,15 @@ theme_override_font_sizes/font_size = 44
 text = "[ press space ]"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="."]
+modulate = Color(100, 100, 100, 1)
+offset_left = 350.0
+offset_top = 188.0
+offset_right = 806.0
+offset_bottom = 242.0
+theme_override_fonts/font = ExtResource("1_ykggm")
+theme_override_font_sizes/font_size = 40
+text = "SCORE: "
+horizontal_alignment = 1
+vertical_alignment = 1

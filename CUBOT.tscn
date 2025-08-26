@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bljbowjhbqhmg"]
 
-[ext_resource type="Script" uid="uid://dxy52ssp0scef" path="res://cubot.gd" id="1_05fu0"]
+[ext_resource type="Script" path="res://cubot.gd" id="1_05fu0"]
 [ext_resource type="Texture2D" uid="uid://c55rloi7siigh" path="res://icon.svg" id="1_hlq5q"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hlq5q"]
